@@ -8,15 +8,27 @@ Pacotes para esse projeto:
 2 - yarn add firebase => nao_ok 
 3 - yarn add react-native-vector-icons => nao_ok
 4 - yarn add react-native-community/async-storage => nao_ok
-5 - yarn add @react-navigation/native => nao_ok
-6 - yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view => nao_ok
-7 - yarn add @react-navigation/stack => nao_ok
-8 - yarn add @react-navigation/drawer => nao_ok
-9 - yarn add react-native-picker-select => nao_ok
-10 - yarn add date-fns => nao_ok
-11 - yarn add @react-native-community/datetimepicker
+5 - yarn add @react-navigation/native => ok
+6 - yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view => ok
 
-12 - react-native link => nao_ok
+    - Se for usar ios instalar pods (via Cocoapods) 
+      npx pod-install ios => ok
+    - Garantir o import:
+      import 'react-native-gesture-handler';
+      Tem que ser no topo do arquivo de entrada do projeto ( index.js ou App.js por exemplo )
+
+7 - yarn add react-native-camera => ok
+8 - yarn add react-native-qrcode-scanner => ok
+9 - yarn add react-native-permissions => ok
+
+
+11 - yarn add @react-navigation/stack => nao_ok
+12 - yarn add @react-navigation/drawer => nao_ok
+13 - yarn add react-native-picker-select => nao_ok
+14 - yarn add date-fns => nao_ok
+15 - yarn add @react-native-community/datetimepicker
+
+16 - react-native link => nao_ok
 
 Para rodar em ios:
 

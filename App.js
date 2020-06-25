@@ -1,20 +1,49 @@
-import React, { Component } from 'react';
-console.disableYellowBox = true;
+import 'react-native-gesture-handler';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {
-  View,
-  Text
-} from 'react-native';
+//Import das telas
+import Login from './src/pages/Login';
+import Home from './src/pages/Home';
+import Qrcode from './src/pages/Qrcode';
 
-class App extends Component {
+const Stack = createStackNavigator();
 
-  render(){
-    return(
-      <View>
-        <Text>Renato</Text>
-      </View>
-    );
-  };
+export default function App(){//App
 
-}
-export default App;
+  return(//return
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login">
+           <Stack.Screen 
+           name="Login" 
+           component={Login} 
+           options={{
+             headerShown: false
+           }}
+           />
+
+           <Stack.Screen 
+           name="Home" 
+           component={Home} 
+           options={{
+             headerShown: false
+           }}
+           />
+
+          <Stack.Screen
+            name="Qrcode"
+            component={Qrcode}
+            options={{
+              title: 'VOLTAR',
+             headerStyle:{
+               backgroundColor: '#DADADA',
+             },
+             headerTintColor: '#84202D'
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+  );//return
+
+}//App
