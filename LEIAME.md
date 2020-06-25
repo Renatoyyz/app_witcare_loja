@@ -21,12 +21,16 @@ Pacotes para esse projeto:
 8 - yarn add react-native-qrcode-scanner => ok
 9 - yarn add react-native-permissions => ok
 
+#Para gerar imagens QRCode = link de referencia: https://www.npmjs.com/package/react-native-qrcode-svg
+10 - yarn add react-native-svg => ok
+11 - yarn add react-native-qrcode-svg => n_ok
 
-11 - yarn add @react-navigation/stack => nao_ok
-12 - yarn add @react-navigation/drawer => nao_ok
-13 - yarn add react-native-picker-select => nao_ok
-14 - yarn add date-fns => nao_ok
-15 - yarn add @react-native-community/datetimepicker
+
+12 - yarn add @react-navigation/stack => nao_ok
+13 - yarn add @react-navigation/drawer => nao_ok
+14 - yarn add react-native-picker-select => nao_ok
+15 - yarn add date-fns => nao_ok
+16 - yarn add @react-native-community/datetimepicker
 
 16 - react-native link => nao_ok
 
