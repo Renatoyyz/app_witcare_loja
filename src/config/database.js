@@ -1,10 +1,10 @@
 module.exports = {
 
     dialect: 'mysql',
-    host: 'localhost',
-    port: '8889',
-    username: 'root',
-    password: 'root',
+    host: 'mysql.witcare.com.br',
+    port: '3306',
+    username: 'witcare',
+    password: 'renato123',
     database: 'witcare',
     define:{
         timestamps: true,

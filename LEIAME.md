@@ -27,6 +27,8 @@ Pacotes para esse projeto:
 
 #Para banco de dados
 ** - yarn add sequelize => ok
+** - yarn add sequelize-websql => n_ok
+
 ** - yarn add mysql2 => ok
 ** - yarn add pg pg-hstore => n_ok //Se for Postgres
 
