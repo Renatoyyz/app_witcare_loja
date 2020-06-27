@@ -3,8 +3,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import './src/database';
-
 
 //Import das telas
 import Login from './src/pages/Login';

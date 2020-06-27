@@ -2,21 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import Tb_user from '../../models/Tb_user';
-
 export default function Login() {
 
   const textoEspecial = "<<Ou faça seu cadastro>>";
   const navigation = useNavigation();
 
   function testeBanco(){
-
-    // const user = await Tb_user.create({
-    //   desnome: 'Renato Oliveira',
-    //   desemail: 'renato@renato.com.br',
-    //   dessenha: '123123',
-    // });
-
     alert('Teste');
   }
 
