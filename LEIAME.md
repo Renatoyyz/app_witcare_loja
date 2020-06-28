@@ -25,12 +25,8 @@ Pacotes para esse projeto:
 10 - yarn add react-native-svg => ok
 11 - yarn add react-native-qrcode-svg => n_ok
 
-#Para banco de dados
-** - yarn add sequelize => ok
-** - yarn add sequelize-websql => n_ok
-
-** - yarn add mysql2 => ok
-** - yarn add pg pg-hstore => n_ok //Se for Postgres
+#para requisições http....
+1 - yarn add axios => ok
 
 #Para criptografia:
 1 - yarn add bcryptjs => n_ok
