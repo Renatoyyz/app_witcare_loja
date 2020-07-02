@@ -1,14 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import api from '../../services/api';
 
-export default function Login() {
+import { connect } from 'react-redux';
+import { editEmail, editSenha, editNome, editId } from '../../actions/AuthActions';
+
+function Login(props) {
 
   const textoEspecial = "<<Ou faça seu cadastro>>";
   const navigation = useNavigation();
 
-  function testeBanco(){
-    alert('Teste');
+  async function testeBanco(){
+    const response = await api.get(`api_witcare`);
+    //  console.log(response.data[0].dessenha + ' - ' + response.data[0].desemail);
+    //  console.log(response.data[0].desnome + ' - ' + response.data[0].iduser);
+    let encontrou = false;
+
+     response.data.forEach(element => {
+       if( (props.dessenha === element.dessenha  ) && ( props.desemail === element.desemail ) ){
+
+          props.editId(element.iduser);
+          props.editNome(element.desnome);
+          encontrou = true;
+
+       }
+     });
+    
+
+    if( encontrou === true ){
+      navigation.navigate('Home');
+    }else{
+      alert('Esse usuário não existe.');
+    }
+
+    props.editEmail('');
+    props.editSenha('');
+    
   }
 
  return (
@@ -22,11 +50,24 @@ export default function Login() {
        </View>
 
       <View style={styles.areaLogin}>
-          <TextInput placeholder="Login" style={styles.input} />
+          <TextInput 
+            placeholder="Login" 
+            underlineColorAndroid = 'transparent' 
+            style={styles.input} 
+            value={props.desemail} 
+            onChangeText={ (texto) => props.editEmail(texto) } 
+          />
       </View>
 
       <View style={styles.areaSenha}>
-          <TextInput placeholder="Senha" style={styles.input} />
+          <TextInput 
+            placeholder="Senha" 
+            underlineColorAndroid = 'transparent' 
+            secureTextEntry={true} 
+            style={styles.input} 
+            value={props.dessenha} 
+            onChangeText={ (texto) => props.editSenha(texto) } 
+          />
       </View>
 
       <View style={styles.areaBotaoEntrar}>
@@ -115,3 +156,18 @@ const styles = StyleSheet.create({
   },
 
 });
+
+const mapStateToProps = (state) => {
+
+  return {
+    iduser: state.auth.iduser,
+    desnome: state.auth.desnome,
+    desemail: state.auth.desemail,
+    dessenha: state.auth.dessenha,
+  };
+
+};
+
+const LoginConnect = connect(mapStateToProps, { editEmail, editSenha, editNome, editId })(Login);
+
+export default LoginConnect;

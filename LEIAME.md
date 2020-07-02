@@ -40,6 +40,10 @@ Pacotes para esse projeto:
 
 16 - react-native link => nao_ok
 
+#para instalar o Redux:
+17 - yarn add react-redux => ok
+18 - yarn add redux => ok
+
 Para rodar em ios:
 
 1 - instalar cocoapods:
