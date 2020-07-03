@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
+import md5 from 'md5';
 
 import { connect } from 'react-redux';
 import { editEmail, editSenha, editNome, editId } from '../../actions/AuthActions';
@@ -17,8 +18,10 @@ function Login(props) {
     //  console.log(response.data[0].desnome + ' - ' + response.data[0].iduser);
     let encontrou = false;
 
+    let senha_hash = md5(props.dessenha);
+
      response.data.forEach(element => {
-       if( (props.dessenha === element.dessenha  ) && ( props.desemail === element.desemail ) ){
+       if( (senha_hash === element.dessenha  ) && ( props.desemail === element.desemail ) ){
 
           props.editId(element.iduser);
           props.editNome(element.desnome);
@@ -77,7 +80,7 @@ function Login(props) {
       </View>
 
       <View style={styles.areaBotaoCadastro}>
-          <TouchableOpacity style={styles.botaoCadastro}>
+          <TouchableOpacity style={styles.botaoCadastro} onPress={() => navigation.navigate('Cadastro')}>
             <Text style={styles.textoCadastro}> {textoEspecial} </Text>
           </TouchableOpacity>
       </View>
@@ -157,17 +160,15 @@ const styles = StyleSheet.create({
 
 });
 
-const mapStateToProps = (state) => {
 
+
+const mapStateToProps = (state) => {//mapStateToProps
   return {
     iduser: state.auth.iduser,
     desnome: state.auth.desnome,
     desemail: state.auth.desemail,
     dessenha: state.auth.dessenha,
   };
-
-};
-
+};//mapStateToProps
 const LoginConnect = connect(mapStateToProps, { editEmail, editSenha, editNome, editId })(Login);
-
 export default LoginConnect;

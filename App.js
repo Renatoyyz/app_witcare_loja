@@ -15,6 +15,7 @@ import Reducers from './src/Reducers';
 
 //Import das telas
 import Login from './src/pages/Login';
+import Cadastro from './src/pages/Cadastro';
 import Home from './src/pages/Home';
 import Qrcode from './src/pages/Qrcode';
 import QrcodeImage from './src/pages/QrcodeImage';
@@ -36,6 +37,18 @@ export default function App(){//App
                 component={Login}
                 options={{
                   headerShown: false
+                }}
+              />
+
+              <Stack.Screen
+                name="Cadastro"
+                component={Cadastro}
+                options={{
+                  title: 'VOLTAR',
+                  headerStyle: {
+                    backgroundColor: '#DADADA',
+                  },
+                  headerTintColor: '#84202D'
                 }}
               />
 

@@ -1,8 +1,8 @@
 const initialState = {
     iduser: 0,
-    desnome: '',
-    desemail: '',
-    dessenha: ''
+    desnome: 'Renato',
+    desemail: 'renato@renato.com.br',
+    dessenha: '1234567'
 };
 
 const AuthReducer = (state = [], action) => {

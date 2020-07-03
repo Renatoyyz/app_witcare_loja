@@ -29,7 +29,9 @@ Pacotes para esse projeto:
 1 - yarn add axios => ok
 
 #Para criptografia:
-1 - yarn add bcryptjs => n_ok
+1 - yarn add md5 => ok
+
+  - yarn add react-native-simple-toast => n_ok
 
 
 12 - yarn add @react-navigation/stack => nao_ok
