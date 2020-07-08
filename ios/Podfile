@@ -77,6 +77,8 @@ target 'app_witcare_loja' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+
+
   target 'app_witcare_lojaTests' do
     inherit! :complete
     # Pods for testing

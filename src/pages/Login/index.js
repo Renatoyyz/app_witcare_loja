@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
 import md5 from 'md5';
+import Toast from 'react-native-simple-toast';
+
 
 import { connect } from 'react-redux';
 import { editEmail, editSenha, editNome, editId } from '../../actions/AuthActions';
@@ -11,30 +13,41 @@ function Login(props) {
 
   const textoEspecial = "<<Ou faça seu cadastro>>";
   const navigation = useNavigation();
+  const [loadLogin, setloadLogin ] = useState(false);
 
-  async function testeBanco(){
-    const response = await api.get(`api_witcare`);
-    //  console.log(response.data[0].dessenha + ' - ' + response.data[0].desemail);
-    //  console.log(response.data[0].desnome + ' - ' + response.data[0].iduser);
+  async function carregaLogin(){
+
     let encontrou = false;
-
     let senha_hash = md5(props.dessenha);
 
-     response.data.forEach(element => {
-       if( (senha_hash === element.dessenha  ) && ( props.desemail === element.desemail ) ){
+    setloadLogin(true);
 
-          props.editId(element.iduser);
-          props.editNome(element.desnome);
-          encontrou = true;
+    await api.get(`api_witcare`)
+    .then((response) => {//then
 
-       }
-     });
+      response.data.forEach(element => {
+        if( (senha_hash === element.dessenha  ) && ( props.desemail === element.desemail ) ){
+ 
+           props.editId(element.iduser);
+           props.editNome(element.desnome);
+           encontrou = true;
+        }
+        setloadLogin(false);
+      });
+      
+    } )//then 
+    .catch( (error) => {
+      setloadLogin(false);
+      Toast.show(error + ': -> Sem acesso a internet.');
+    } )
+    
+     
     
 
     if( encontrou === true ){
       navigation.navigate('Home');
     }else{
-      alert('Esse usuário não existe.');
+      Toast.show('Esse usuário não existe.');
     }
 
     props.editEmail('');
@@ -43,7 +56,7 @@ function Login(props) {
   }
 
  return (
-   <View style={styles.container}>
+   <KeyboardAvoidingView style={styles.container}>
        
        <View style={styles.areaImagem} >
           <Image
@@ -74,18 +87,25 @@ function Login(props) {
       </View>
 
       <View style={styles.areaBotaoEntrar}>
-          <TouchableOpacity style={styles.botaoEntrar} onPress={() => testeBanco()} >
-            <Text style={styles.textoBotao}>ENTRAR</Text>
+          <TouchableOpacity style={styles.botaoEntrar} onPress={() => carregaLogin()} >
+            {
+              loadLogin ?
+              (
+                <ActivityIndicator size={30} color="#fff" />
+              ) :
+                <Text style={styles.textoBotao}>ENTRAR</Text>
+            }
+            
           </TouchableOpacity>
       </View>
 
-      <View style={styles.areaBotaoCadastro}>
-          <TouchableOpacity style={styles.botaoCadastro} onPress={() => navigation.navigate('Cadastro')}>
-            <Text style={styles.textoCadastro}> {textoEspecial} </Text>
-          </TouchableOpacity>
+      <View style={styles.areaBotaoCadastro}>      
+                <TouchableOpacity style={styles.botaoCadastro} onPress={() => navigation.navigate('Cadastro')}>
+                  <Text style={styles.textoCadastro}> {textoEspecial} </Text>
+                </TouchableOpacity>
       </View>
 
-   </View>
+   </KeyboardAvoidingView>
   );
 }
 

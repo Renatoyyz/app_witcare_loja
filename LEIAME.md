@@ -6,7 +6,8 @@ Pacotes para esse projeto:
 
 1 - yarn add styled-components => nao_ok
 2 - yarn add firebase => nao_ok 
-3 - yarn add react-native-vector-icons => nao_ok
+3 - yarn add react-native-vector-icons => ok
+    react-native link react-native-vector-icons => ok
 4 - yarn add react-native-community/async-storage => nao_ok
 5 - yarn add @react-navigation/native => ok
 6 - yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view => ok

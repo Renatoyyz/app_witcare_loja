@@ -47,6 +47,7 @@ export default function App(){//App
                   title: 'VOLTAR',
                   headerStyle: {
                     backgroundColor: '#DADADA',
+
                   },
                   headerTintColor: '#84202D'
                 }}
